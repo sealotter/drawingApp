@@ -27,7 +27,7 @@ io.on('connection', (socket) => {
 // app.use(express.json())
 
 
-app.use(express.static(path.join(__dirname, '../client/canvasfun')))
+app.use(express.static(path.join(__dirname, '../client/canvasfun/build')))
 //app.use('/public', express.static(path.join(__dirname, '../client/public')))
 
 
