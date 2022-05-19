@@ -16,34 +16,31 @@ import io from 'socket.io-client'
 const CanvasBoard = () => {
   
 
-  const { current: canvasDetail } = useRef({color: 'red', socketUrl: '/'})
+  const { current: canvasInfo } = useRef({color: 'red', socketUrl: '/'})
   //const socket = io(window.location.origin)
 
   // socket.on('connect',() => {
   //   console.log('i am connected' )
   // })
 
-  // const changeColor = newColor => {
-  //   canvasDetail.color = newColor
 
-  // }
  
 
   //for socket
   useEffect(() => {
     console.log('client', process.env.NODE_ENV)
     if(process.env.NODE_ENV === 'developement') {
-      canvasDetail.socketUrl = 'http://localhost:3000'
+      canvasInfo.socketUrl = 'http://localhost:3000'
     }
-    console.log('socketurl is' , canvasDetail.socketUrl)
-    canvasDetail.socket = io.connect(canvasDetail.socketUrl, () => {
+    console.log('socketurl is' , canvasInfo.socketUrl)
+    canvasInfo.socket = io.connect(canvasInfo.socketUrl, () => {
       console.log('connect to server......')
 
       //listengin for disconnect from a client
       
       
     })
-    canvasDetail.socket.on('image-data', (data) =>{
+    canvasInfo.socket.on('image-data', (data) =>{
       const image = new Image()
       const canvas = document.querySelector('#canvas-board')
       const ctx = canvas.getContext('2d')
@@ -56,7 +53,7 @@ const CanvasBoard = () => {
   })
   
 
-  //for pointer
+  //for mouse pointer
   useEffect(() =>  {
     // const canvasRef = useRef(null)
     // const ctx = useRef(null)
@@ -79,16 +76,16 @@ const CanvasBoard = () => {
         ctx.moveTo(last_position.x, last_position.y)
         ctx.lineTo(set_position.x, set_position.y)
         ctx.stroke()
-        ctx.strokeStyle = canvasDetail.color
+        ctx.strokeStyle = canvasInfo.color
         ctx.closePath()
 
           //throttle
-        if(!canvasDetail.waiting) {
+        if(!canvasInfo.waiting) {
           const base64EncodedUrl = canvas.toDataURL('image/png')
-          canvasDetail.socket.emit('image-data', base64EncodedUrl)
-          canvasDetail.waiting = true
+          canvasInfo.socket.emit('image-data', base64EncodedUrl)
+          canvasInfo.waiting = true
           setTimeout(() => {
-            canvasDetail.waiting = false
+            canvasInfo.waiting = false
           },100)
         }
         
