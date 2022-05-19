@@ -32,8 +32,8 @@ app.use(express.static(path.join(__dirname, '../client/canvasfun/build')))
 
 
 
-
+//../client/canvasfun/build
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/canvasfun/build', 'index.html'))
+  res.sendFile(path.join(__dirname, '../client/canvasfun', 'build', 'index.html'))
 }); 
