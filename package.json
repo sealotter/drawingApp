@@ -9,9 +9,6 @@
     "client": "NODE_ENV=dev && cd ./client/canvasfun && npm start dev",
     "server": "nodemon ./server/index.js",
     "start": "concurrently \"npm run server\" \"npm run client\""
-
-    
-    
   },
   "repository": {
     "type": "git",
