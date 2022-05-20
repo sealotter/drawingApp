@@ -12,7 +12,7 @@ const io = require('socket.io')(server)
 //require('./socket')(io)
 
 io.on('connection', (socket) => {
-  console.log(socket.id, 'online')
+  console.log('--server socket', socket.id, 'online')
   socket.on('image-data', (data) => {
     //broadcast image to all connected users
     socket.broadcast.emit('image-data', data)

@@ -33,9 +33,10 @@ const CanvasBoard = (props) => {
   useEffect(() => {
     console.log('client', process.env.NODE_ENV)
     if(process.env.NODE_ENV === 'developement') {
-      canvasInfo.socketUrl = 'http://localhost:3000'
+      canvasInfo.socketUrl = 'http://localhost:5000'
       
     }
+    console.log('client socket running', canvasInfo.socketUrl )
    
     canvasInfo.socket = io.connect(canvasInfo.socketUrl, () => {
    
@@ -82,7 +83,7 @@ const CanvasBoard = (props) => {
         ctx.stroke()
         ctx.strokeStyle = canvasInfo.color
         ctx.closePath()
-        
+       
 
           //throttle
         if(!canvasInfo.waiting) {
@@ -119,10 +120,6 @@ const CanvasBoard = (props) => {
     }
        
 
-    
-   
- 
-
   })
 
   
@@ -138,8 +135,7 @@ const CanvasBoard = (props) => {
 
         <canvas className='canvas-board' id='canvas-board'></canvas>
        
-        {/* <select value={color} onChange={(evt) => setColor(evt.target.value)}> {colors.map(color => <option key = {color} value = {color}>{color}</option>)}</select> */}
-
+       
      </div>
     )
 
