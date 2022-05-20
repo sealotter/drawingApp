@@ -1,0 +1,6 @@
+.canvas-board {
+  background-color: blue;
+  position: fixed;
+  width: 100%;
+  margin: auto;
+}

@@ -13,9 +13,9 @@ import io from 'socket.io-client'
 //similar to lisa had with the api for grace shopper, there was a rate limit, so had to consider a throttle so wont overload the connect, creating a time delay to space it out 
 
 
-const CanvasBoard = () => {
+const CanvasBoard = (props) => {
   
-
+  
   const { current: canvasInfo } = useRef({color: 'red', socketUrl: '/'})
   //const socket = io(window.location.origin)
 
@@ -24,6 +24,9 @@ const CanvasBoard = () => {
   // })
 
 
+  const colorPicker = newColor => {
+    canvasInfo.color = newColor
+  }
  
 
   //for socket
@@ -31,10 +34,11 @@ const CanvasBoard = () => {
     console.log('client', process.env.NODE_ENV)
     if(process.env.NODE_ENV === 'developement') {
       canvasInfo.socketUrl = 'http://localhost:3000'
+      
     }
-    console.log('socketurl is' , canvasInfo.socketUrl)
+   
     canvasInfo.socket = io.connect(canvasInfo.socketUrl, () => {
-      console.log('connect to server......')
+   
 
       //listengin for disconnect from a client
       
@@ -78,6 +82,7 @@ const CanvasBoard = () => {
         ctx.stroke()
         ctx.strokeStyle = canvasInfo.color
         ctx.closePath()
+        
 
           //throttle
         if(!canvasInfo.waiting) {
@@ -127,11 +132,12 @@ const CanvasBoard = () => {
   
     return (
       <div>
-        <canvas className='canvas-board' id='canvas-board'>
-          {/* ref = {canvasRef} onMouseDown = {onMouseDown} onMouseUp = {onMouseUp} onMouseMove = {onMouseMove} */}
+        <div className='color-picker-container' onChange={(evt) => colorPicker(evt.target.value) } >
+          <input type='color' ></input>
+        </div>
 
-        </canvas>
-        <br/>
+        <canvas className='canvas-board' id='canvas-board'></canvas>
+       
         {/* <select value={color} onChange={(evt) => setColor(evt.target.value)}> {colors.map(color => <option key = {color} value = {color}>{color}</option>)}</select> */}
 
      </div>

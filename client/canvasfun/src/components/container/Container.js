@@ -4,6 +4,7 @@ import './style.css'
 
 
 
+
 class Container extends React.Component {
   
 
@@ -11,9 +12,7 @@ class Container extends React.Component {
 
     return(
       <div className = 'container'>
-        <div className='color-picker-container'>
-          <input type='color' ></input>
-        </div>
+
 
         <div className='canvas-container'>
           <CanvasBoard />
