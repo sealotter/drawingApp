@@ -4,11 +4,11 @@
   "description": "",
   "main": "server/index.js",
   "scripts": {
-    "start:dev": "NODE_ENV=prod && node ./server/index.js",
+    "start": "NODE_ENV=prod && node ./server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "NODE_ENV=prod && cd ./client/canvasfun && npm start",
+    "build": "NODE_ENV=prod && cd ./client/canvasfun && npm start",
     "server": "nodemon ./server/index.js",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "start:dev": "concurrently \"npm run server\" \"npm run build\""
   },
   "repository": {
     "type": "git",
