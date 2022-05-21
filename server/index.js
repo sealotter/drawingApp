@@ -21,6 +21,8 @@ io.on('connection', (socket) => {
   socket.on('close', () => {
     console.log(`socket connection with id ${socket.id} has DISCONNECTED`)
   })
+  setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
+
 })
 
 
