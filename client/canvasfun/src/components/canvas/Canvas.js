@@ -1,6 +1,5 @@
 
 import React, { useRef} from 'react';
-
 import { useEffect } from 'react';
 import './style.css'
 import io from 'socket.io-client'
@@ -32,7 +31,7 @@ const CanvasBoard = (props) => {
   //for socket
   useEffect(() => {
     console.log('client', process.env.NODE_ENV)
-    if(process.env.NODE_ENV === 'developement') {
+    if(process.env.NODE_ENV === 'production') {
       canvasInfo.socketUrl = 'http://localhost:5000'
       
     }
