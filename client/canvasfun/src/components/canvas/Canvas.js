@@ -12,7 +12,7 @@ import io from 'socket.io-client'
 //similar to lisa had with the api for grace shopper, there was a rate limit, so had to consider a throttle so wont overload the connect, creating a time delay to space it out 
 
 
-const CanvasBoard = (props) => {
+const CanvasBoard = () => {
   
   
   const { current: canvasInfo } = useRef({color: 'red', socketUrl: '/'})
@@ -31,7 +31,7 @@ const CanvasBoard = (props) => {
   //for socket
   useEffect(() => {
     console.log('client', process.env.NODE_ENV)
-    if(process.env.NODE_ENV === 'production') {
+    if(process.env.NODE_ENV === 'development') {
       canvasInfo.socketUrl = 'http://localhost:5000'
       
     }
