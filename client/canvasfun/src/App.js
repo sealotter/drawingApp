@@ -1,6 +1,6 @@
 import React from 'react';
 // import io from 'socket.io-client';
-
+import './App.css'
 
 import Container from './components/container/Container.js';
 
@@ -15,7 +15,9 @@ class App extends React.Component {
   }
   render() {
     return (
+      <div>
       <Container/>
+      </div>
     )
   
   }

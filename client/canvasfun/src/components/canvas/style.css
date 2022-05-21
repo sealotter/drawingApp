@@ -1,6 +1,68 @@
 .canvas-board {
-  background-color: black;
+  
   position: fixed;
+  background-color: white;
+  /*filter: box-shadow(3px 3px 3px rgba(0, 0, 0, 0.6));*/
+  /* width: 100%;
+  margin: auto; */
+  margin-top: 0px;
   width: 100%;
-  margin: auto;
+  border: thin;
+  border-style: solid;
+  border-width: 0.5px;
+  border-color: black;
+  display: block;
+  margin: 0 auto;
+  
+}
+
+#canvas-board:hover {
+  cursor: crosshair;
+}
+
+button {
+ color: white;
+ background-color: rgba(0, 0, 0, 0.7);
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 100px;
+  transition: 0.2s;
+  cursor: pointer;
+ 
+    /* Float the buttons side by side */
+  /* background: linear-gradient(to right, #dbe0ed, #9daac3);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4), inset 0 -6px 10px rgba(86, 86, 86, 0.2); */
+
+}
+button:hover {
+  background-color: #9a9a9a;
+  color: #444;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 2px solid rgba(0, 0, 0, 0.5);
+}
+
+input {
+  border-width: 0.2ch;
+
+}
+
+.color-picker-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /*b*ackground-color: rgba(0, 0, 0, 0.2);*/
+  margin-bottom: 10px;
+  padding: 0 10px 40px;
+  
+  align-self: baseline;
+}
+
+h1 {
+  font-style: italic;
+			font-size: 30px;
+			margin: 0;
+			text-align: left;
+			color: #807d7d;
+      font-weight: lighter;
+      
+      
 }

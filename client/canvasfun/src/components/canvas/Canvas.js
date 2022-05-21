@@ -15,7 +15,8 @@ import io from 'socket.io-client'
 const CanvasBoard = () => {
   
   
-  const { current: canvasInfo } = useRef({color: 'red', socketUrl: '/'})
+ 
+  const { current: canvasInfo } = useRef({color: 'black', socketUrl: '/'})
   //const socket = io(window.location.origin)
 
   // socket.on('connect',() => {
@@ -82,6 +83,7 @@ const CanvasBoard = () => {
         ctx.moveTo(last_position.x, last_position.y)
         ctx.lineTo(set_position.x, set_position.y)
         ctx.stroke()
+        ctx.lineJoin = 'round'
         ctx.strokeStyle = canvasInfo.color
         ctx.closePath()
        
@@ -98,6 +100,7 @@ const CanvasBoard = () => {
         
  
     }
+   
 
     canvas.addEventListener('mousemove', function(evt) {
       last_position.x = set_position.x
@@ -122,17 +125,24 @@ const CanvasBoard = () => {
        
 
   })
+  const clear = () => {
+    const canvas = document.querySelector('#canvas-board')
+    const ctx = canvas.getContext('2d')
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+  }
 
-  
-
-
-
-  
     return (
       <div>
+        
         <div className='color-picker-container' onChange={(evt) => colorPicker(evt.target.value) } >
+        <h1> Canvas Drawing Fun!</h1>
           <input type='color' ></input>
+          <button onClick={clear}>Clear</button>
         </div>
+       
+      
+      
+      
 
         <canvas className='canvas-board' id='canvas-board'></canvas>
        

@@ -11,6 +11,7 @@ class Container extends React.Component {
       <div className = 'container'>
 
 
+
         <div className='canvas-container'>
           <CanvasBoard />
         </div>
