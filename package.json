@@ -5,7 +5,7 @@
   "scripts": {
     "start": "NODE_ENV=prod && node ./server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "client": "NODE_ENV=dev && cd ./client/canvasfun && npm start",
+    "client": "NODE_ENV=prod && cd ./client/canvasfun && npm start",
     "server": "nodemon ./server/index.js",
     "start:dev": "concurrently \"npm run server\" \"npm run client\""
   },

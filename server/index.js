@@ -3,12 +3,12 @@ const path = require('path');
 const express = require('express');
 const app = express();
 //node index.js
-const port = process.env.PORT || 5000
-const httpServer = require('http').createServer(app)
-app.listen(port,() => console.log(`listening on port ${port}`))
+const port = process.env.PORT || 3000
+// const httpServer = require('http').createServer(app)
+const server= app.listen(port,() => console.log(`listening on port ${port}`))
 
 
-const io = require('socket.io')(httpServer)
+const io = require('socket.io')(server)
 
 //require('./socket')(io)
 
@@ -21,7 +21,7 @@ io.on('connection', (socket) => {
   socket.on('close', () => {
     console.log(`socket connection with id ${socket.id} has DISCONNECTED`)
   })
-  setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
+  
 
 })
 

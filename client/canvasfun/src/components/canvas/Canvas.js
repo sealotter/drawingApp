@@ -33,7 +33,7 @@ const CanvasBoard = () => {
   useEffect(() => {
     console.log('client', process.env.NODE_ENV)
     if(process.env.NODE_ENV === 'development') {
-      canvasInfo.socketUrl = 'http://localhost:5000'
+      canvasInfo.socketUrl = 'http://localhost:3000'
       
     }
 
@@ -125,11 +125,11 @@ const CanvasBoard = () => {
        
 
   })
-  const clear = () => {
-    const canvas = document.querySelector('#canvas-board')
-    const ctx = canvas.getContext('2d')
-    ctx.clearRect(0, 0, canvas.width, canvas.height)
-  }
+  // const clear = () => {
+  //   const canvas = document.querySelector('#canvas-board')
+  //   const ctx = canvas.getContext('2d')
+  //   ctx.clearRect(0, 0, canvas.width, canvas.height)
+  // }
 
     return (
       <div>
@@ -137,7 +137,7 @@ const CanvasBoard = () => {
         <div className='color-picker-container' onChange={(evt) => colorPicker(evt.target.value) } >
         <h1> Canvas Drawing Fun!</h1>
           <input type='color' ></input>
-          <button onClick={clear}>Clear</button>
+          {/* <button onClick={clear}>Clear</button> */}
         </div>
        
       
