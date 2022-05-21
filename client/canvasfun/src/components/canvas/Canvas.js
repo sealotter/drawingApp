@@ -32,12 +32,12 @@ const CanvasBoard = (props) => {
   //for socket
   useEffect(() => {
     console.log('client', process.env.NODE_ENV)
-    // if(process.env.NODE_ENV === 'developement') {
-    //   canvasInfo.socketUrl = 'http://localhost:5000'
+    if(process.env.NODE_ENV === 'developement') {
+      canvasInfo.socketUrl = 'http://localhost:5000'
       
-    // }
+    }
 
-    canvasInfo.socketUrl = 'http://localhost:5000'
+    //canvasInfo.socketUrl = 'http://localhost:5000'
     console.log('client socket running', canvasInfo.socketUrl )
    
     canvasInfo.socket = io.connect(canvasInfo.socketUrl, () => {
